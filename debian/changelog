@@ -1,0 +1,208 @@
+r-cran-rcppeigen (0.3.3.9.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+  * debian/control: Set Build-Depends: to current R version
+  * debian/control: Set Standards-Version: to current version 
+  * debian/control: Switch to virtual debhelper-compat (= 11)
+  * debian/compat: Removed
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Thu, 17 Dec 2020 17:21:31 -0600
+
+r-cran-rcppeigen (0.3.3.7.0-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Standards-Version: to current version 
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sat, 16 Nov 2019 10:43:43 -0600
+
+r-cran-rcppeigen (0.3.3.5.0-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Standards-Version: to current version 
+  * debian/control: Set Build-Depends: to current R version 
+  * debian/control: Add Vcs-Browser: and Vcs-Git:
+  * debian/control: Switch from cdbs to dh-r
+  * debian/rules: Idem
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sat, 24 Nov 2018 17:23:56 -0600
+
+r-cran-rcppeigen (0.3.3.4.0-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Standards-Version: to current version 
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Wed, 07 Feb 2018 21:08:16 -0600
+
+r-cran-rcppeigen (0.3.3.3.1-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Standards-Version: to current version 
+  * debian/control: Set Build-Depends: to current R version 
+  * debian/compat: Set level to 9
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Mon, 20 Nov 2017 20:29:59 -0600
+
+r-cran-rcppeigen (0.3.3.3.0-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 02 May 2017 09:02:59 -0500
+
+r-cran-rcppeigen (0.3.2.9.1-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Wed, 15 Mar 2017 06:44:58 -0500
+
+r-cran-rcppeigen (0.3.2.9.0-1) unstable; urgency=medium
+
+  * New upstream release
+  
+  * debian/control: Set Build-Depends: to current R version 
+  * debian/control: Set Standards-Version: to current version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sun, 21 Aug 2016 07:12:09 -0500
+
+r-cran-rcppeigen (0.3.2.8.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Mon, 29 Feb 2016 19:38:13 -0600
+
+r-cran-rcppeigen (0.3.2.8.0-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 23 Feb 2016 11:08:16 -0600
+
+r-cran-rcppeigen (0.3.2.7.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 19 Jan 2016 20:35:19 -0600
+
+r-cran-rcppeigen (0.3.2.5.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Wed, 23 Sep 2015 06:15:08 -0500
+
+r-cran-rcppeigen (0.3.2.5.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 14 Jul 2015 17:57:58 -0500
+
+r-cran-rcppeigen (0.3.2.4.0-1) unstable; urgency=low
+
+  * New upstream release
+  
+  * debian/control: Add r-cran-pkgkitten to (Build-)Depends
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Thu, 26 Feb 2015 14:12:35 -0600
+
+r-cran-rcppeigen (0.3.2.3.0-1) unstable; urgency=low
+
+  * New upstream release
+  
+  * debian/control: Set Build-Depends: to current R version 
+  * debian/control: Set Standards-Version: to current version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 23 Dec 2014 14:46:16 -0600
+
+r-cran-rcppeigen (0.3.2.2.0-1) unstable; urgency=low
+
+  * New upstream release
+  
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Thu, 21 Aug 2014 07:10:31 -0500
+
+r-cran-rcppeigen (0.3.2.1.2-1) unstable; urgency=low
+
+  * New upstream release
+  
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 06 May 2014 18:08:48 -0500
+
+r-cran-rcppeigen (0.3.2.1.1-1) unstable; urgency=low
+
+  * New upstream release
+
+  * debian/control: Set Build-Depends: to current R version 
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sat, 08 Mar 2014 08:10:32 -0600
+
+r-cran-rcppeigen (0.3.2.1.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Mon, 03 Mar 2014 19:37:28 -0600
+
+r-cran-rcppeigen (0.3.2.0.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sat, 01 Mar 2014 19:09:07 -0600
+
+r-cran-rcppeigen (0.3.2.0.2-2) unstable; urgency=low
+
+  * Rebuilt as required for Rcpp 0.11.0
+  * debian/control: Added (Build-)Depends: on r-cran-rcpp (>= 0.11.0-1)
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Mon, 03 Feb 2014 20:27:49 -0600
+
+r-cran-rcppeigen (0.3.2.0.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Sun, 26 Jan 2014 11:43:41 -0600
+
+r-cran-rcppeigen (0.3.2.0.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Thu, 19 Dec 2013 19:35:07 -0600
+
+r-cran-rcppeigen (0.3.2.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Wed, 13 Nov 2013 15:06:56 -0600
+
+r-cran-rcppeigen (0.3.1.2.3-2) unstable; urgency=low
+
+  * debian/control: Correcting Depends: on r-cran-rcppeigen
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 29 Oct 2013 16:43:18 -0500
+
+r-cran-rcppeigen (0.3.1.2.3-1) unstable; urgency=low
+
+  * New upstream release
+
+  * debian/control: Set Build-Depends: to current R version
+  * debian/control: Set Standards-Version: to current version 
+  
+  * debian/control: Update Build-Depends: to r-cran-matrix (>= 1.1-0)
+
+ -- Dirk Eddelbuettel <edd@debian.org>  Tue, 29 Oct 2013 06:30:00 -0500
+
+r-cran-rcppeigen (0.3.1.2.1-1) unstable; urgency=low
+
+  * Initial Debian release 				(Closes: #722652)
+  
+ -- Dirk Eddelbuettel <edd@debian.org>  Thu, 12 Sep 2013 20:59:34 -0500
+
+
