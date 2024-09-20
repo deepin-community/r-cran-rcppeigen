@@ -2,7 +2,7 @@
 //
 // RcppEigenWrap.h: Rcpp wrap methods for Eigen matrices, vectors and arrays
 //
-// Copyright (C) 2011 - 2012   Douglas Bates, Dirk Eddelbuettel and Romain Francois
+// Copyright (C) 2011 - 2022   Douglas Bates, Dirk Eddelbuettel and Romain Francois
 //
 // This file is part of RcppEigen.
 //
@@ -26,51 +26,6 @@ namespace Rcpp{
 
     namespace RcppEigen{
 
-        template<typename T>
-        SEXP Eigen_cholmod_wrap(const Eigen::CholmodDecomposition<Eigen::SparseMatrix<T> >& obj) {
-			typedef T* Tpt;
-            const cholmod_factor* f = obj.factor();
-            if (f->minor < f->n)
-                throw std::runtime_error("CHOLMOD factorization was unsuccessful");
-
-            //FIXME: Should extend this selection according to T
-            S4 ans(std::string(f->is_super ? "dCHMsuper" : "dCHMsimpl"));
-            IntegerVector  dd(2);
-            dd[0] = dd[1] = f->n;
-            ans.slot("Dim") = dd;
-            ans.slot("perm") = ::Rcpp::wrap((int*)f->Perm, (int*)f->Perm + f->n);
-            ans.slot("colcount") = ::Rcpp::wrap((int*)f->ColCount, (int*)f->ColCount + f->n);
-            IntegerVector tt(f->is_super ? 6 : 4);
-            tt[0] = f->ordering; tt[1] = f->is_ll;
-            tt[2] = f->is_super; tt[3] = f->is_monotonic;
-            ans.slot("type") = tt;
-            if (f->is_super) {
-                tt[4] = f->maxcsize; tt[5] = f->maxesize;
-                ans.slot("super") = ::Rcpp::wrap((int*)f->super, ((int*)f->super) + f->nsuper + 1);
-                ans.slot("pi")    = ::Rcpp::wrap((int*)f->pi, ((int*)f->pi) + f->nsuper + 1);
-                ans.slot("px")    = ::Rcpp::wrap((int*)f->px, ((int*)f->px) + f->nsuper + 1);
-                ans.slot("s")     = ::Rcpp::wrap((int*)f->s, ((int*)f->s) + f->ssize);
-                ans.slot("x")     = ::Rcpp::wrap((Tpt)f->x, ((T*)f->x) + f->xsize);
-            } else {
-                ans.slot("i")     = ::Rcpp::wrap((int*)f->i, ((int*)f->i) + f->nzmax);
-                ans.slot("p")     = ::Rcpp::wrap((int*)f->p, ((int*)f->p) + f->n + 1);
-                ans.slot("x")     = ::Rcpp::wrap((Tpt)f->x, ((T*)f->x) + f->nzmax);
-                ans.slot("nz")    = ::Rcpp::wrap((int*)f->nz, ((int*)f->nz) + f->n);
-                ans.slot("nxt")   = ::Rcpp::wrap((int*)f->next, ((int*)f->next) + f->n + 2);
-                ans.slot("prv")   = ::Rcpp::wrap((int*)f->prev, ((int*)f->prev) + f->n + 2);
-            }
-            return ::Rcpp::wrap(ans);
-        }
-
-    } /* namespace RcppEigen */
-
-    template<typename T>
-    SEXP wrap(const Eigen::CholmodDecomposition<Eigen::SparseMatrix<T> >& obj) {
-        return RcppEigen::Eigen_cholmod_wrap(obj);
-    }
-
-    namespace RcppEigen{
-
         // helper trait to identify if T is a plain object type
         // TODO: perhaps move this to its own file
         template <typename T> struct is_plain : Rcpp::traits::same_type<T,typename T::PlainObject>{} ;
@@ -80,16 +35,22 @@ namespace Rcpp{
 
         // for plain dense objects
         template <typename T>
-        SEXP eigen_wrap_plain_dense( const T& obj, Rcpp::traits::true_type ){
-			typename Eigen::internal::conditional<T::IsRowMajor,
-												  Eigen::Matrix<typename T::Scalar,
-																T::RowsAtCompileTime,
-																T::ColsAtCompileTime>,
-												  const T&>::type objCopy(obj);
-            int m = obj.rows(), n = obj.cols();
-			R_xlen_t size = static_cast<R_xlen_t>(m) * n;
-			SEXP ans = PROTECT(::Rcpp::wrap(objCopy.data(), objCopy.data() + size));
-            if( T::ColsAtCompileTime != 1 ) {
+        SEXP eigen_wrap_plain_dense( const T& obj, Rcpp::traits::true_type ) {
+            bool needs_dim = T::ColsAtCompileTime != 1;
+            R_xlen_t m = obj.rows(), n = obj.cols();
+            if (needs_dim && (m > INT_MAX || n > INT_MAX)) {
+                Rcpp::stop("array dimensions cannot exceed INT_MAX");
+            }
+            R_xlen_t size = m * n;
+            typename Eigen::internal::conditional<
+                T::IsRowMajor,
+                Eigen::Matrix<typename T::Scalar,
+                              T::RowsAtCompileTime,
+                              T::ColsAtCompileTime>,
+                const T&>::type objCopy(obj);
+            SEXP ans = PROTECT(::Rcpp::wrap(objCopy.data(),
+                                            objCopy.data() + size));
+            if (needs_dim) {
                 SEXP dd = PROTECT(::Rf_allocVector(INTSXP, 2));
                 int *d = INTEGER(dd);
                 d[0] = m;
@@ -213,7 +174,7 @@ namespace Rcpp{
         public:
             Exporter(SEXP x) : vec(x) {
                 if (TYPEOF(x) != RTYPE)
-                    throw std::invalid_argument("Wrong R type for mapped vector");
+                    throw std::invalid_argument("Wrong R type for mapped vector"); // #nocov
             }
             OUT get() {return OUT(vec.begin(), vec.size());}
         } ;
@@ -257,7 +218,7 @@ namespace Rcpp{
             public:
             Exporter(SEXP x) : vec(x), d_ncol(1), d_nrow(Rf_xlength(x)) {
                 if (TYPEOF(x) != RTYPE)
-                    throw std::invalid_argument("Wrong R type for mapped matrix");
+                    throw std::invalid_argument("Wrong R type for mapped matrix");	// #nocov
                 if (::Rf_isMatrix(x)) {
                     int *dims = INTEGER( ::Rf_getAttrib( x, R_DimSymbol ) ) ;
                     d_nrow = dims[0];

@@ -2,8 +2,8 @@ Source: r-cran-rcppeigen
 Section: gnu-r
 Priority: optional
 Maintainer: Dirk Eddelbuettel <edd@debian.org>
-Build-Depends: debhelper-compat (= 11), r-base-dev (>= 4.0.3), dh-r, r-cran-rcpp (>= 0.11.0), r-cran-matrix (>= 1.1-0), r-cran-pkgkitten
-Standards-Version: 4.5.1
+Build-Depends: debhelper-compat (= 13), r-base-dev (>= 4.4.1), dh-r, r-cran-rcpp (>= 0.11.0), r-cran-matrix (>= 1.1-0), r-cran-pkgkitten
+Standards-Version: 4.7.0
 Vcs-Browser: https://salsa.debian.org/edd/r-cran-rcppeigen
 Vcs-Git: https://salsa.debian.org/edd/r-cran-rcppeigen.git
 Homepage: https://cran.r-project.org/package=RcppEigen
